@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-title>Prijava u aplikaciju</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="formdata" (ngSubmit)="onClickSubmit()">
+            <p>
+                <mat-form-field>
+                    <mat-label>Unesite korisničko ime</mat-label>
+                    <input matInput type="text" name="korisnickoIme" placeholder="Korisnicko ime"
+                        formControlName="korisnickoIme">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Unesite lozinku</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="lozinka" placeholder="Lozinka"
+                        formControlName="lozinka">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Sakrij lozinku'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </p>
+
+            <p *ngIf="error" class="error">
+                {{ error }}
+            </p>
+
+            <p *ngIf="success" class="success">
+                {{ success }}
+            </p>
+
+            <div class="button">
+                <button type="button" (click)="register()" mat-raised-button>Registracija</button>
+
+                <button type="submit" mat-raised-button color="primary">Prijava</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
