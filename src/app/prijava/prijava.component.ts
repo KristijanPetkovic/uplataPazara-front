@@ -1,7 +1,9 @@
-import { Input } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { Korisnik } from '../korisnik/korisnik';
 import { PrijavaService } from './services/prijava.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { PrijavaService } from './services/prijava.service';
   templateUrl: './prijava.component.html',
   styleUrls: ['./prijava.component.scss']
 })
+
 export class PrijavaComponent implements OnInit {
   @Input() error: string | null | undefined;
   @Input() success: string | null | undefined;
@@ -19,7 +22,7 @@ export class PrijavaComponent implements OnInit {
   korisnik: any;
   hide = true;
 
-  constructor(private prijavaService: PrijavaService, private router: Router) { }
+  constructor(private prijavaService: PrijavaService, private router: Router,) { }
 
   ngOnInit(): void {
     this.formdata = new FormGroup({
@@ -28,10 +31,11 @@ export class PrijavaComponent implements OnInit {
     });
   }
 
-  onClickSubmit() {
+  login() {
     this.prijavaService.getKorisnik().subscribe(res => {
       this.korisnik = res.find((element: { korisnickoIme: any; lozinka: any; }) => element.korisnickoIme == this.formdata.value.korisnickoIme && element.lozinka == this.formdata.value.lozinka);
       if (this.korisnik) {
+        localStorage.setItem('currentUser', JSON.stringify(this.formdata.value.korisnickoIme));
         this.router.navigate(['/pocetna']);
       } else {
         this.error = "Pogrešno korisničko ime ili lozinka!";
@@ -48,7 +52,7 @@ export class PrijavaComponent implements OnInit {
       if (this.korisnik == undefined) {
         this.prijavaService.addKorisnik(this.formdata).subscribe();
         this.error = "";
-        this.success = "Uspješno ste se registrovali!";
+        this.success = "Uspješno ste se registrovali, bices prijavljen polako!";
         setTimeout(() => {
           this.router.navigate(['/pocetna']);
         }, 3000);
@@ -57,5 +61,4 @@ export class PrijavaComponent implements OnInit {
       }
     });
   }
-
 }
