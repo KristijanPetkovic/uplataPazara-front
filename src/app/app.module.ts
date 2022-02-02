@@ -15,13 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { PocetnaComponent } from './pocetna/pocetna.component';
+import { TrgovacComponent } from './trgovac/trgovac.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KorisnikComponent,
     PrijavaComponent,
-    PocetnaComponent
+    PocetnaComponent,
+    TrgovacComponent
   ],
   imports: [
     BrowserModule,

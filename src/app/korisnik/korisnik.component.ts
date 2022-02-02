@@ -13,8 +13,7 @@ export class KorisnikComponent implements OnInit {
   constructor(private dataService: KorisnikService) { }
 
   ngOnInit() {
-
-    this.dataService.getKorisniks().subscribe((data: Korisnik)=>{
+    this.dataService.getKorisniks().subscribe((data: Korisnik) => {
       console.log(data);
       this.products = data;
     })
