@@ -27,4 +27,8 @@ export class PrijavaService {
   public getKorisnik(): Observable<any> {
     return this.http.get<Korisnik>(this.configUrl, this.httpOptions);
   }
+
+  public GetKorisnikByName(korisnickoIme: any): Observable<Korisnik> {
+    return this.http.get<Korisnik>(this.configUrl + "/GetKorisnikByName/" + korisnickoIme, this.httpOptions);
+  }
 }

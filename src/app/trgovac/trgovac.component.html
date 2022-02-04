@@ -1,8 +1,75 @@
-<div style="padding: 13px;">
-    <ul *ngFor="let product of products">
-        <li>{{ product.trgovacId }} </li>
-        <li>{{ product.nazivTrgovca }} </li>
-        <li>{{ product.drzava }} </li>
-        <li>{{ product.adresa }} </li>
-    </ul>
+<button routerLink="/pocetna" type="button" mat-raised-button>Pocetna</button>
+<br>
+<hr>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="trgovacId">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let product"> {{product.trgovacId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nazivTrgovca">
+        <th mat-header-cell *matHeaderCellDef> Naziv trgovca </th>
+        <td mat-cell *matCellDef="let product"> {{product.nazivTrgovca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="drzava">
+        <th mat-header-cell *matHeaderCellDef> Država </th>
+        <td mat-cell *matCellDef="let product"> {{product.drzava}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="grad">
+        <th mat-header-cell *matHeaderCellDef> Grad </th>
+        <td mat-cell *matCellDef="let product"> {{product.grad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adresa">
+        <th mat-header-cell *matHeaderCellDef> Adresa </th>
+        <td mat-cell *matCellDef="let product"> {{product.adresa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mb">
+        <th mat-header-cell *matHeaderCellDef> MB </th>
+        <td mat-cell *matCellDef="let product"> {{product.mb}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pib">
+        <th mat-header-cell *matHeaderCellDef> PIB </th>
+        <td mat-cell *matCellDef="let product"> {{product.pib}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="brojRacuna">
+        <th mat-header-cell *matHeaderCellDef> Broj računa </th>
+        <td mat-cell *matCellDef="let product"> {{product.brojRacuna}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="datumUnosa">
+        <th mat-header-cell *matHeaderCellDef> Datum unosa </th>
+        <td mat-cell *matCellDef="let product"> {{ product.datumUnosa.replace('/Date(','').replace(')/','') |
+            date:"dd.MM.yyyy" }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="akcije">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let product">
+            <button routerLink="/trgovac/{{product.trgovacId}}" mat-icon-button color="primary" aria-label="akcije">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="delete(product)" mat-icon-button color="primary" aria-label="Obriši">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let product; columns: displayedColumns;"></tr>
+</table>
+
+<!-- Kod za dialog-->
+<!-- <h1 mat-dialog-title>Brisanje</h1>
+<div mat-dialog-content>
+    <p>Uspješno ste izbrisali red!</p>
 </div>
+<div mat-dialog-actions>
+    <button mat-button routerLink="/trgovac">Ok</button>
+</div> -->

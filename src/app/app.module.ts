@@ -16,6 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { PocetnaComponent } from './pocetna/pocetna.component';
 import { TrgovacComponent } from './trgovac/trgovac.component';
+import { MatTableModule } from '@angular/material/table';
+import { TrgovacAkcijeComponent } from './trgovac-akcije/trgovac-akcije.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { TrgovacComponent } from './trgovac/trgovac.component';
     KorisnikComponent,
     PrijavaComponent,
     PocetnaComponent,
-    TrgovacComponent
+    TrgovacComponent,
+    TrgovacAkcijeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import { TrgovacComponent } from './trgovac/trgovac.component';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

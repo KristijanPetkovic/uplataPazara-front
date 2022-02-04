@@ -26,4 +26,8 @@ export class TrgovacService {
   public getTrgovac(): Observable<any> {
     return this.http.get<Trgovac>(this.configUrl, this.httpOptions);
   }
+
+  public deleteTrgovac(id: number): Observable<any> {
+    return this.http.delete<Trgovac>(this.configUrl + "/" + id, this.httpOptions);
+  }
 }

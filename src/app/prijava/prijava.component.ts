@@ -31,10 +31,22 @@ export class PrijavaComponent implements OnInit {
     });
   }
 
+  // login() {
+  //   this.prijavaService.getKorisnik().subscribe(res => {
+  //     this.korisnik = res.find((element: { korisnickoIme: any; lozinka: any; }) => element.korisnickoIme == this.formdata.value.korisnickoIme && element.lozinka == this.formdata.value.lozinka);
+  //     if (this.korisnik) {
+  //       localStorage.setItem('currentUser', JSON.stringify(this.formdata.value.korisnickoIme));
+  //       this.router.navigate(['/pocetna']);
+  //     } else {
+  //       this.error = "Pogrešno korisničko ime ili lozinka!";
+  //     }
+  //   });
+  // }
+
   login() {
-    this.prijavaService.getKorisnik().subscribe(res => {
-      this.korisnik = res.find((element: { korisnickoIme: any; lozinka: any; }) => element.korisnickoIme == this.formdata.value.korisnickoIme && element.lozinka == this.formdata.value.lozinka);
-      if (this.korisnik) {
+    this.prijavaService.GetKorisnikByName(this.formdata.value.korisnickoIme).subscribe(res => {
+      console.log(res)
+      if (res) {
         localStorage.setItem('currentUser', JSON.stringify(this.formdata.value.korisnickoIme));
         this.router.navigate(['/pocetna']);
       } else {
