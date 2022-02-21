@@ -1,1 +1,58 @@
-<p>trgovac-akcije works!</p>
+<button routerLink="/trgovac" type="button" mat-raised-button>Nazad na pregled trgovaca</button>
+<br>
+<hr>
+<form [formGroup]="formdata" (ngSubmit)="snimi()">
+    <div>
+        <div>
+            <mat-form-field>
+                <mat-label>Naziv trgovca</mat-label>
+                <input matInput type="text" name="nazivTrgovca" placeholder="Unesite naziv trgovca"
+                    formControlName="nazivTrgovca">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Država</mat-label>
+                <input matInput type="text" name="drzava" formControlName="drzava" placeholder="Unesite državu">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Grad</mat-label>
+                <input matInput type="text" name="grad" formControlName="grad" placeholder="Unesite grad">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Adresa</mat-label>
+                <input matInput type="text" name="adresa" formControlName="adresa" placeholder="Unesite adresa">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>MB</mat-label>
+                <input matInput type="text" name="mb" formControlName="mb" placeholder=" Unesite MB">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>PIB</mat-label>
+                <input matInput type="text" name="pib" formControlName="pib" placeholder="Unesite PIB">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Broj računa</mat-label>
+                <input matInput type="text" name="brojRacuna" formControlName="brojRacuna"
+                    placeholder="Unesite broj računa">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Datum unosa</mat-label>
+                <input matInput [matDatepicker]="picker" name="datumUnosa" placeholder="Unesite datum"
+                    formControlName="datumUnosa">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="button">
+        <button type="submit" mat-raised-button color="primary">Sačuvaj</button>
+    </div>
+</form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 import { TrgovacService } from './services/trgovac.service';
 import { Trgovac } from './trgovac';
 
@@ -25,9 +26,15 @@ export class TrgovacComponent implements OnInit {
     console.log("radi" + trgovac.trgovacId);
     this.dataService.deleteTrgovac(trgovac.trgovacId).subscribe(res => {
       console.log(res);
-
-      const dialogRef = this.dialog.open(TrgovacComponent, {
-        width: '250px',
+      if(res != null) {
+        this.dialog.open(DialogComponent, {
+          width: '500px',
+          data: { title: 'Greška', text: 'Dogodila se greška, trgovac nije obrisan!', buttonText: 'OK'}
+        });
+      }
+      this.dialog.open(DialogComponent, {
+        width: '500px',
+        data: { title: 'Brisanje trgovca', text: 'Uspješno ste obrisali trgovca!', buttonText: 'OK'}
       });
 
     });

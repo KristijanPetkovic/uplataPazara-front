@@ -19,7 +19,9 @@ import { TrgovacComponent } from './trgovac/trgovac.component';
 import { MatTableModule } from '@angular/material/table';
 import { TrgovacAkcijeComponent } from './trgovac-akcije/trgovac-akcije.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     PrijavaComponent,
     PocetnaComponent,
     TrgovacComponent,
-    TrgovacAkcijeComponent
+    TrgovacAkcijeComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatCardModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

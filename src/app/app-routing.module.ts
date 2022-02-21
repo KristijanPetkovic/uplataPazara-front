@@ -12,11 +12,12 @@ const routes: Routes = [
   { path: 'pocetna', component: PocetnaComponent },
   { path: 'korisnik', component: KorisnikComponent },
   { path: 'trgovac', component: TrgovacComponent },
-  { path: 'trgovac/:id', component: TrgovacAkcijeComponent }
+  { path: 'trgovac/:id', component: TrgovacAkcijeComponent },
+  { path: 'trgovac/novi', component: TrgovacAkcijeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

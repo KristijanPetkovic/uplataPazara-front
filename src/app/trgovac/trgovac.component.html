@@ -1,4 +1,4 @@
-<button routerLink="/pocetna" type="button" mat-raised-button>Pocetna</button>
+<button routerLink="/trgovac/novi" type="button" mat-raised-button>Dodaj novog trgovca</button>
 <br>
 <hr>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -64,12 +64,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let product; columns: displayedColumns;"></tr>
 </table>
-
-<!-- Kod za dialog-->
-<!-- <h1 mat-dialog-title>Brisanje</h1>
-<div mat-dialog-content>
-    <p>Uspješno ste izbrisali red!</p>
-</div>
-<div mat-dialog-actions>
-    <button mat-button routerLink="/trgovac">Ok</button>
-</div> -->

@@ -22,6 +22,9 @@ export class TrgovacService {
   public addTrgovac(trgovac: any): Observable<any> {
     return this.http.post<Trgovac>(this.configUrl, JSON.stringify(trgovac.value), this.httpOptions);
   }
+  public editTrgovac(trgovac: any, id: number): Observable<Trgovac> {
+    return this.http.put<Trgovac>(this.configUrl + "/" + id, JSON.stringify(trgovac.value), this.httpOptions);
+  }
 
   public getTrgovac(): Observable<any> {
     return this.http.get<Trgovac>(this.configUrl, this.httpOptions);
@@ -29,5 +32,9 @@ export class TrgovacService {
 
   public deleteTrgovac(id: number): Observable<any> {
     return this.http.delete<Trgovac>(this.configUrl + "/" + id, this.httpOptions);
+  }
+
+  public getTrgovacById(id: number): Observable<Trgovac> {
+    return this.http.get<Trgovac>(this.configUrl + "/" + id, this.httpOptions);
   }
 }
