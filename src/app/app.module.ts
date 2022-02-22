@@ -22,6 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { KurirComponent } from './kurir/kurir.component';
+import { KurirAkcijeComponent } from './kurir-akcije/kurir-akcije.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     PocetnaComponent,
     TrgovacComponent,
     TrgovacAkcijeComponent,
-    DialogComponent
+    DialogComponent,
+    KurirComponent,
+    KurirAkcijeComponent
   ],
   imports: [
     BrowserModule,

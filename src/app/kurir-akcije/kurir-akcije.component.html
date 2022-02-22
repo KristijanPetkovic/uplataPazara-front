@@ -1,0 +1,93 @@
+<button routerLink="/kurir" type="button" mat-raised-button>Nazad na pregled kurira</button>
+<br>
+<hr>
+<form [formGroup]="formdata" (ngSubmit)="snimi()">
+    <div>
+        <!--
+       <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Trgovac</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let trgovac of trgovci" [value]="trgovac.trgovacId">
+                        {{trgovac.trgovacId}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+-->
+        <div>
+            <mat-form-field>
+                <mat-label>Ime kurira</mat-label>
+                <input matInput type="text" name="ime" placeholder="Unesite ime" formControlName="ime">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Prezime kurira</mat-label>
+                <input matInput type="text" name="prezime" formControlName="prezime" placeholder="Unesite prezime">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>JMBG</mat-label>
+                <input matInput type="text" name="jmbg" formControlName="jmbg" placeholder="Unesite JMBG">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Datum autorizacije</mat-label>
+                <input matInput [matDatepicker]="picker" name="datumAutorizacije" placeholder="Unesite datum"
+                    formControlName="datumAutorizacije">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Status</mat-label>
+                <input matInput type="text" name="status" formControlName="status" placeholder="Unesite status">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Država</mat-label>
+                <input matInput type="text" name="drzava" formControlName="drzava" placeholder=" Unesite državu">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Grad</mat-label>
+                <input matInput type="text" name="grad" formControlName="grad" placeholder="Unesite grad">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Adresa</mat-label>
+                <input matInput type="text" name="adresa" formControlName="adresa" placeholder="Unesite adresu">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Telefon</mat-label>
+                <input matInput type="text" name="telefon" formControlName="telefon" placeholder="Unesite telefon">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>eMail</mat-label>
+                <input matInput type="text" name="mail" formControlName="mail" placeholder="Unesite eMail">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Datum unosa</mat-label>
+                <input matInput [matDatepicker]="picker2" name="datumUnosa" placeholder="Unesite datum"
+                    formControlName="datumUnosa">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="button">
+        <button type="submit" mat-raised-button color="primary">Sačuvaj</button>
+    </div>
+</form>

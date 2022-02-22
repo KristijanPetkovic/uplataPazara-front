@@ -11,7 +11,8 @@ import { Trgovac } from './trgovac';
 })
 export class TrgovacComponent implements OnInit {
   dataSource: any = [];
-  displayedColumns: string[] = ['trgovacId', 'nazivTrgovca', 'drzava', 'adresa', 'grad', 'pib', 'mb', 'brojRacuna', 'datumUnosa', 'akcije'];
+  displayedColumns: string[] = ['trgovacId', 'nazivTrgovca', 'drzava', 'adresa',
+  'grad', 'pib', 'mb', 'brojRacuna', 'datumUnosa', 'akcije'];
 
   constructor(private dataService: TrgovacService, public dialog: MatDialog) { }
 
@@ -36,7 +37,6 @@ export class TrgovacComponent implements OnInit {
         width: '500px',
         data: { title: 'Brisanje trgovca', text: 'Uspješno ste obrisali trgovca!', buttonText: 'OK'}
       });
-
     });
   }
 }

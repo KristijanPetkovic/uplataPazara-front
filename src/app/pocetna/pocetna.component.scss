@@ -1,9 +1,21 @@
 :host {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.divCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
 
 .cardColor{
-  background-color: silver;
+  background-color: #F6F2F1;
   max-width: 50%;
-  
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
