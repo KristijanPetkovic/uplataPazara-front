@@ -53,6 +53,6 @@
     </div>
 
     <div class="button">
-        <button type="submit" mat-raised-button color="primary">Sačuvaj</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!formdata.valid">Sačuvaj</button>
     </div>
 </form>
