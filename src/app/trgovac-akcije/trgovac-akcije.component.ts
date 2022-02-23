@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TrgovacService } from '../trgovac/services/trgovac.service';
 import { Trgovac } from '../trgovac/trgovac';
@@ -16,14 +16,14 @@ export class TrgovacAkcijeComponent implements OnInit {
 
   public id: number | null = 0;
   result: any = [];
-  nazivTrgovca: string = "";
+  /*nazivTrgovca: string = "";
   pib: string = "";
   drzava: string = "";
   grad: string = "";
   adresa: string = "";
   mb: string = "";
   brojRacuna: string = "";
-  datumUnosa: Date = new Date();
+  datumUnosa: Date = new Date();*/
 
   formdata = new FormGroup({
     trgovacId: new FormControl(),
@@ -72,6 +72,7 @@ export class TrgovacAkcijeComponent implements OnInit {
       });
     }
   }
+
   snimi() {
     if (this.id) {
       this.dataService.editTrgovac(this.formdata, this.id).subscribe((data: Trgovac) => {

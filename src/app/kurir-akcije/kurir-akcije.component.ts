@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Kurir } from '../kurir/kurir';
 import { KurirService } from '../kurir/services/kurir.service';
@@ -17,7 +19,10 @@ export class KurirAkcijeComponent implements OnInit {
 
   public id: number | null = 0;
   result: any = [];
-  trgovci: Trgovac | undefined ;
+  trgovci: any = [];
+  statusi: any[] = [
+    {value: 'Aktivan', viewValue: 'Aktivan'},
+    {value: 'Neaktivan', viewValue: 'Neaktivan'}];
   kurirId: string = "";
   trgovacId: string = "";
   ime: string = "";
@@ -48,18 +53,18 @@ export class KurirAkcijeComponent implements OnInit {
     datumUnosa: new FormControl()
   });
 
-  constructor(private dataService: KurirService,private trgovacService: TrgovacService, private route: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private dataService: KurirService, private trgovacService: TrgovacService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.id);
 
-    //this.trgovci=this.trgovacService.getTrgovac().pipe(map(trgovac: Trgovac) => trgovac.trgovacId as Kurir);
-
-
+    this.trgovacService.getTrgovac().subscribe(res => this.trgovci = res);
+  
     if (this.id) {
       this.dataService.getKurirById(this.id).subscribe((data: Kurir) => {
         if (data) {
+          console.log('data je',data);
           this.formdata = new FormGroup({
             kurirId: new FormControl(this.id),
             trgovacId: new FormControl(data.trgovacId),

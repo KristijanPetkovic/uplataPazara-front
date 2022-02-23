@@ -7,6 +7,8 @@ import { PocetnaComponent } from './pocetna/pocetna.component';
 import { PrijavaComponent } from './prijava/prijava.component';
 import { TrgovacAkcijeComponent } from './trgovac-akcije/trgovac-akcije.component';
 import { TrgovacComponent } from './trgovac/trgovac.component';
+import { UplataAkcijeComponent } from './uplata-akcije/uplata-akcije.component';
+import { UplataComponent } from './uplata/uplata.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/prijava', pathMatch: 'full' },
@@ -19,6 +21,9 @@ const routes: Routes = [
   { path: 'kurir', component: KurirComponent },
   { path: 'kurir/:id', component: KurirAkcijeComponent },
   { path: 'kurir/novi', component: KurirAkcijeComponent },
+  { path: 'uplata', component: UplataComponent },
+  { path: 'uplata/:id', component: UplataAkcijeComponent },
+  { path: 'uplata/novi', component: UplataAkcijeComponent }
 ];
 
 @NgModule({

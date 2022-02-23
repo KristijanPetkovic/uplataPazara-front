@@ -1,0 +1,77 @@
+<button routerLink="/uplata/novi" type="button" mat-raised-button>Dodaj novu uplatu</button>
+<br>
+<hr>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="uplataId">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let product"> {{product.uplataId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="kurirId">
+        <th mat-header-cell *matHeaderCellDef> Kurir </th>
+        <td mat-cell *matCellDef="let product"> {{product.kurirId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="racunPrimaoca">
+        <th mat-header-cell *matHeaderCellDef> Račun primaoca </th>
+        <td mat-cell *matCellDef="let product"> {{product.racunPrimaoca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nazivUplatioca">
+        <th mat-header-cell *matHeaderCellDef> Naziv uplatioca </th>
+        <td mat-cell *matCellDef="let product"> {{product.nazivUplatioca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gradUplatioca">
+        <th mat-header-cell *matHeaderCellDef> Grad uplatioca </th>
+        <td mat-cell *matCellDef="let product"> {{product.gradUplatioca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adresaUplatioca">
+        <th mat-header-cell *matHeaderCellDef> Adresa uplatioca </th>
+        <td mat-cell *matCellDef="let product"> {{product.adresaUplatioca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="datumTransakcije">
+        <th mat-header-cell *matHeaderCellDef> Datum transakcije </th>
+        <td mat-cell *matCellDef="let product"> {{ product.datumTransakcije.replace('/Date(','').replace(')/','') |
+            date:"dd.MM.yyyy" }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="iznosUplate">
+        <th mat-header-cell *matHeaderCellDef> Iznos uplate </th>
+        <td mat-cell *matCellDef="let product"> {{product.iznosUplate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="iznosProvizije">
+        <th mat-header-cell *matHeaderCellDef> Iznos provizije </th>
+        <td mat-cell *matCellDef="let product"> {{product.iznosProvizije}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ukupnaUplata">
+        <th mat-header-cell *matHeaderCellDef> Ukupna uplata </th>
+        <td mat-cell *matCellDef="let product"> {{product.ukupnaUplata}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="datumUnosa">
+        <th mat-header-cell *matHeaderCellDef> Datum unosa </th>
+        <td mat-cell *matCellDef="let product"> {{ product.datumUnosa.replace('/Date(','').replace(')/','') |
+            date:"dd.MM.yyyy" }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="akcije">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let product">
+            <button routerLink="/uplata/{{product.uplataId}}" mat-icon-button color="primary" aria-label="akcije">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="delete(product)" mat-icon-button color="primary" aria-label="Obriši">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let product; columns: displayedColumns;"></tr>
+</table>

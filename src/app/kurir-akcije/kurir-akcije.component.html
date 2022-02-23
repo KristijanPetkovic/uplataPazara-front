@@ -3,18 +3,18 @@
 <hr>
 <form [formGroup]="formdata" (ngSubmit)="snimi()">
     <div>
-        <!--
-       <div>
-            <mat-form-field appearance="fill">
+
+        <div>
+            <mat-form-field>
                 <mat-label>Trgovac</mat-label>
-                <mat-select>
+                <mat-select formControlName="trgovacId">
                     <mat-option *ngFor="let trgovac of trgovci" [value]="trgovac.trgovacId">
-                        {{trgovac.trgovacId}}
+                        {{ trgovac.trgovacId }} - {{ trgovac.nazivTrgovca }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
--->
+
         <div>
             <mat-form-field>
                 <mat-label>Ime kurira</mat-label>
@@ -42,9 +42,13 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Status</mat-label>
-                <input matInput type="text" name="status" formControlName="status" placeholder="Unesite status">
-            </mat-form-field>
+                <mat-label>Satus</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option *ngFor="let status of statusi" [value]="status.value">
+                    {{status.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
         </div>
 
         <div>
