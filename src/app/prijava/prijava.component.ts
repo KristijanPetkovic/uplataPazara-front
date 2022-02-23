@@ -1,9 +1,7 @@
-import { Injectable, Input } from '@angular/core';
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-import { Korisnik } from '../korisnik/korisnik';
 import { PrijavaService } from './services/prijava.service';
 
 @Component({
@@ -19,7 +17,7 @@ export class PrijavaComponent implements OnInit {
   korisnickoIme: string = "";
   lozinka: string = "";
   formdata: any;
-  korisnik: any;
+  korisnik: any = [];
   hide = true;
 
   constructor(private prijavaService: PrijavaService, private router: Router,) { }
@@ -31,24 +29,15 @@ export class PrijavaComponent implements OnInit {
     });
   }
 
-  // login() {
-  //   this.prijavaService.getKorisnik().subscribe(res => {
-  //     this.korisnik = res.find((element: { korisnickoIme: any; lozinka: any; }) => element.korisnickoIme == this.formdata.value.korisnickoIme && element.lozinka == this.formdata.value.lozinka);
-  //     if (this.korisnik) {
-  //       localStorage.setItem('currentUser', JSON.stringify(this.formdata.value.korisnickoIme));
-  //       this.router.navigate(['/pocetna']);
-  //     } else {
-  //       this.error = "Pogrešno korisničko ime ili lozinka!";
-  //     }
-  //   });
-  // }
-
   login() {
-    this.prijavaService.GetKorisnikByName(this.formdata.value.korisnickoIme).subscribe(res => {
-      console.log(res)
-      if (res) {
-        localStorage.setItem('currentUser', JSON.stringify(this.formdata.value.korisnickoIme));
-        this.router.navigate(['/pocetna']);
+    this.prijavaService.getKorisnik().subscribe(res => {
+      this.korisnik = res.find((element: { korisnickoIme: any; lozinka: any; }) => element.korisnickoIme == this.formdata.value.korisnickoIme && element.lozinka == this.formdata.value.lozinka);
+      if (this.korisnik) {
+        localStorage.setItem('currentUser', this.formdata.value.korisnickoIme);
+        this.router.navigate(['/pocetna'])
+          .then(() => {
+            window.location.reload();
+          });
       } else {
         this.error = "Pogrešno korisničko ime ili lozinka!";
       }
@@ -74,3 +63,4 @@ export class PrijavaComponent implements OnInit {
     });
   }
 }
+

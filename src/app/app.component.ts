@@ -10,27 +10,8 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'uplata-pazara';
-  proba: string = '';
-  userDisplayName = '';
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd))
-      .subscribe(event => {
-        const temp = JSON.stringify(event);
-        const json_temp = JSON.parse(temp);
-        console.log(json_temp.url);
-        if (json_temp.url == '/prijava' || json_temp.url == '/') {
-          this.proba = 'none';
-        }
-      });
-  }
-
-  logout(): void {
-    this.router.navigate(['/prijava']);
-    localStorage.removeItem('currentUser');
-  }
-
+  ngOnInit() {}
 }

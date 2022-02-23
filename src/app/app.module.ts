@@ -26,6 +26,7 @@ import { KurirComponent } from './kurir/kurir.component';
 import { KurirAkcijeComponent } from './kurir-akcije/kurir-akcije.component';
 import { UplataComponent } from './uplata/uplata.component';
 import { UplataAkcijeComponent } from './uplata-akcije/uplata-akcije.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UplataAkcijeComponent } from './uplata-akcije/uplata-akcije.component';
     KurirComponent,
     KurirAkcijeComponent,
     UplataComponent,
-    UplataAkcijeComponent
+    UplataAkcijeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

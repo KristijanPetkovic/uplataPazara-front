@@ -1,0 +1,11 @@
+<div class="toolbar" role="banner">
+
+    <img width="40" alt="Angular Logo" src="favicon.ico" (click)='pocetna()' />
+    <span (click)='pocetna()'>UPLATA PAZARA</span>
+
+    <div class="spacer"></div>
+    <!-- Dugme za odjavu -->
+    <div *ngIf="show">
+        <button type="button" (click)="logout()" mat-raised-button>Odjavi se {{ userDisplayName }}!</button>
+    </div>
+</div>
