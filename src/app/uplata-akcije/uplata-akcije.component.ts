@@ -47,14 +47,12 @@ export class UplataAkcijeComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
 
     this.kurirService.getKurir().subscribe(res => this.kuriri = res);
 
     if (this.id) {
       this.dataService.getUplataById(this.id).subscribe((data: Uplata) => {
         if (data) {
-          console.log('data je', data);
           this.formdata = new FormGroup({
             uplataId: new FormControl(this.id),
             kurirId: new FormControl(data.kurirId),
@@ -85,10 +83,10 @@ export class UplataAkcijeComponent implements OnInit {
       });
     }
   }
+  
   snimi() {
     if (this.id) {
       this.dataService.editUplata(this.formdata, this.id).subscribe((data: Uplata) => {
-        console.log(data);
         if (data == null) {
           this.dialog.open(DialogComponent, {
             width: '500px',
@@ -98,7 +96,6 @@ export class UplataAkcijeComponent implements OnInit {
       });
     } else {
       this.dataService.addUplata(this.formdata).subscribe((data: Uplata) => {
-        console.log(data);
         if (data) {
           this.dialog.open(DialogComponent, {
             width: '500px',
@@ -115,4 +112,3 @@ export class UplataAkcijeComponent implements OnInit {
     }
   }
 }
-

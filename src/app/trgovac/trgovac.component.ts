@@ -18,15 +18,12 @@ export class TrgovacComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getTrgovac().subscribe((data: Trgovac) => {
-      console.log(data);
       this.dataSource = data;
     });
   }
 
   delete(trgovac: Trgovac) {
-    console.log("radi" + trgovac.trgovacId);
     this.dataService.deleteTrgovac(trgovac.trgovacId).subscribe(res => {
-      console.log(res);
       if(res != null) {
         this.dialog.open(DialogComponent, {
           width: '500px',

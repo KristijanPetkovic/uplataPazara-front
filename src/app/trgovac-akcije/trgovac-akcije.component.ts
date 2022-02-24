@@ -41,7 +41,6 @@ export class TrgovacAkcijeComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
 
     if (this.id) {
       this.dataService.getTrgovacById(this.id).subscribe((data: Trgovac) => {
@@ -76,7 +75,6 @@ export class TrgovacAkcijeComponent implements OnInit {
   snimi() {
     if (this.id) {
       this.dataService.editTrgovac(this.formdata, this.id).subscribe((data: Trgovac) => {
-        console.log(data);
         if (data == null) {
           this.dialog.open(DialogComponent, {
             width: '500px',
@@ -86,7 +84,6 @@ export class TrgovacAkcijeComponent implements OnInit {
       });
     } else {
       this.dataService.addTrgovac(this.formdata).subscribe((data: Trgovac) => {
-        console.log(data);
         if (data) {
           this.dialog.open(DialogComponent, {
             width: '500px',
@@ -95,6 +92,5 @@ export class TrgovacAkcijeComponent implements OnInit {
         }
       });
     }
-
   }
 }

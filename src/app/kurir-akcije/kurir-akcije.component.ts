@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Kurir } from '../kurir/kurir';
 import { KurirService } from '../kurir/services/kurir.service';
 import { TrgovacService } from '../trgovac/services/trgovac.service';
-import { Trgovac } from '../trgovac/trgovac';
 
 @Component({
   selector: 'app-kurir-akcije',
@@ -57,14 +54,12 @@ export class KurirAkcijeComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
 
     this.trgovacService.getTrgovac().subscribe(res => this.trgovci = res);
   
     if (this.id) {
       this.dataService.getKurirById(this.id).subscribe((data: Kurir) => {
         if (data) {
-          console.log('data je',data);
           this.formdata = new FormGroup({
             kurirId: new FormControl(this.id),
             trgovacId: new FormControl(data.trgovacId),
@@ -99,10 +94,10 @@ export class KurirAkcijeComponent implements OnInit {
       });
     }
   }
+
   snimi() {
     if (this.id) {
       this.dataService.editKurir(this.formdata, this.id).subscribe((data: Kurir) => {
-        console.log(data);
         if (data == null) {
           this.dialog.open(DialogComponent, {
             width: '500px',
@@ -112,7 +107,6 @@ export class KurirAkcijeComponent implements OnInit {
       });
     } else {
       this.dataService.addKurir(this.formdata).subscribe((data: Kurir) => {
-        console.log(data);
         if (data) {
           this.dialog.open(DialogComponent, {
             width: '500px',

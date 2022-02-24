@@ -19,15 +19,12 @@ export class UplataComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getUplata().subscribe((data: Uplata) => {
-      console.log(data);
       this.dataSource = data;
     });
   }
 
   delete(uplata: Uplata) {
-    console.log("radi" + uplata.uplataId);
     this.dataService.deleteUplata(uplata.uplataId).subscribe(res => {
-      console.log(res);
       if (res != null) {
         this.dialog.open(DialogComponent, {
           width: '500px',

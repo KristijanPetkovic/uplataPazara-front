@@ -12,39 +12,39 @@
 
             <mat-form-field>
                 <mat-label>Država</mat-label>
-                <input matInput type="text" name="drzava" formControlName="drzava" placeholder="Unesite državu">
+                <input matInput type="text" name="drzava" formControlName="drzava" required placeholder="Unesite državu">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Grad</mat-label>
-                <input matInput type="text" name="grad" formControlName="grad" placeholder="Unesite grad">
+                <input matInput type="text" name="grad" formControlName="grad" required placeholder="Unesite grad">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Adresa</mat-label>
-                <input matInput type="text" name="adresa" formControlName="adresa" placeholder="Unesite adresa">
+                <input matInput type="text" name="adresa" formControlName="adresa" required placeholder="Unesite adresa">
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
                 <mat-label>MB</mat-label>
-                <input matInput type="text" name="mb" formControlName="mb" placeholder=" Unesite MB">
+                <input matInput type="text" name="mb" formControlName="mb" required placeholder=" Unesite MB">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>PIB</mat-label>
-                <input matInput type="text" name="pib" formControlName="pib" placeholder="Unesite PIB">
+                <input matInput type="text" name="pib" formControlName="pib" required  requiredplaceholder="Unesite PIB">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Broj računa</mat-label>
-                <input matInput type="text" name="brojRacuna" formControlName="brojRacuna"
+                <input matInput type="text" name="brojRacuna"  formControlName="brojRacuna" required
                     placeholder="Unesite broj računa">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Datum unosa</mat-label>
-                <input matInput [matDatepicker]="picker" name="datumUnosa" placeholder="Unesite datum"
+                <input matInput [matDatepicker]="picker" name="datumUnosa"   placeholder="Unesite datum" required
                     formControlName="datumUnosa">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>

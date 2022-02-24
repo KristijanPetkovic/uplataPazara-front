@@ -19,15 +19,12 @@ export class KurirComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getKurir().subscribe((data: Kurir) => {
-      console.log(data);
       this.dataSource = data;
     });
   }
 
   delete(kurir: Kurir) {
-    console.log("radi" + kurir.kurirId);
     this.dataService.deleteKurir(kurir.kurirId).subscribe(res => {
-      console.log(res);
       if (res != null) {
         this.dialog.open(DialogComponent, {
           width: '500px',

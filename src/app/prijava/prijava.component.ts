@@ -46,10 +46,8 @@ export class PrijavaComponent implements OnInit {
 
   register() {
     this.prijavaService.getKorisnik().subscribe(res => {
-      console.log(res);
 
       this.korisnik = res.find((element: { korisnickoIme: string; }) => element.korisnickoIme == this.formdata.value.korisnickoIme);
-      console.log(this.korisnik);
       if (this.korisnik == undefined) {
         this.prijavaService.addKorisnik(this.formdata).subscribe();
         this.error = "";
@@ -63,4 +61,3 @@ export class PrijavaComponent implements OnInit {
     });
   }
 }
-

@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
       .subscribe(event => {
         const temp = JSON.stringify(event);
         const json_temp = JSON.parse(temp);
-        console.log(json_temp.url);
         if (json_temp.url == '/prijava' || json_temp.url == '/') {
           this.show = false;
         }
@@ -38,5 +37,4 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/pocetna']);
     }
   }
-
 }

@@ -7,9 +7,9 @@
         <div>
             <mat-form-field>
                 <mat-label>Kurir</mat-label>
-                <mat-select formControlName="kurirId">
+                <mat-select formControlName="kurirId" required>
                     <mat-option *ngFor="let kurir of kuriri" [value]="kurir.kurirId">
-                        {{ kurir.kurirId }} - {{ kurir.ime }}
+                        {{ kurir.kurirId }} - {{ kurir.ime }} {{ kurir.prezime }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -18,7 +18,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Račun primaoca</mat-label>
-                <input matInput type="text" name="racunPrimaoca" placeholder="Unesite račun primaoca"
+                <input matInput type="text" name="racunPrimaoca" required placeholder="Unesite račun primaoca"
                     formControlName="racunPrimaoca">
             </mat-form-field>
         </div>
@@ -26,19 +26,19 @@
         <div>
             <mat-form-field>
                 <mat-label>Uplatioc</mat-label>
-                <input matInput type="text" name="nazivUplatioca" formControlName="nazivUplatioca"
+                <input matInput type="text" name="nazivUplatioca" required formControlName="nazivUplatioca"
                     placeholder="Unesite naziv uplatioca">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Grad uplatioca</mat-label>
-                <input matInput type="text" name="gradUplatioca" formControlName="gradUplatioca"
+                <input matInput type="text" name="gradUplatioca" required formControlName="gradUplatioca"
                     placeholder="Unesite grad uplatioca">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Adresa uplatioca</mat-label>
-                <input matInput type="text" name="adresaUplatioca" formControlName="adresaUplatioca"
+                <input matInput type="text" name="adresaUplatioca" required formControlName="adresaUplatioca"
                     placeholder="Unesite adresa uplatioca">
             </mat-form-field>
         </div>
@@ -46,7 +46,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Datum transakcije</mat-label>
-                <input matInput [matDatepicker]="picker" name="datumTransakcije" placeholder="Unesite datum"
+                <input matInput [matDatepicker]="picker" name="datumTransakcije" required placeholder="Unesite datum"
                     formControlName="datumTransakcije">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -58,19 +58,19 @@
         <div>
             <mat-form-field>
                 <mat-label>Iznos uplate</mat-label>
-                <input matInput type="text" name="iznosUplate" (blur)='izracunaj()' formControlName="iznosUplate"
+                <input matInput type="text" name="iznosUplate" (blur)='izracunaj()' required formControlName="iznosUplate"
                     placeholder=" Unesite iznos uplate">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Iznos provizije</mat-label>
-                <input matInput type="text" name="iznosProvizije" formControlName="iznosProvizije" [readonly]="true"
+                <input matInput type="text" name="iznosProvizije" formControlName="iznosProvizije" required [readonly]="true"
                     placeholder="Iznos provizije">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Ukupna uplata</mat-label>
-                <input matInput name="ukupnaUplata" formControlName="ukupnaUplata" [readonly]="true"
+                <input matInput name="ukupnaUplata" formControlName="ukupnaUplata" required [readonly]="true"
                     placeholder="Ukupna uplata">
             </mat-form-field>
         </div>
@@ -78,7 +78,7 @@
         <div>
             <mat-form-field>
                 <mat-label>Datum unosa</mat-label>
-                <input matInput [matDatepicker]="picker2" name="datumUnosa" placeholder="Unesite datum"
+                <input matInput [matDatepicker]="picker2" name="datumUnosa" required placeholder="Unesite datum"
                     formControlName="datumUnosa">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
@@ -87,6 +87,6 @@
     </div>
 
     <div class="button">
-        <button type="submit" mat-raised-button color="primary">Sačuvaj</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!formdata.valid">Sačuvaj</button>
     </div>
 </form>
