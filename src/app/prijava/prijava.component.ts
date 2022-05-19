@@ -51,7 +51,7 @@ export class PrijavaComponent implements OnInit {
       if (this.korisnik == undefined) {
         this.prijavaService.addKorisnik(this.formdata).subscribe();
         this.error = "";
-        this.success = "Uspješno ste se registrovali, bices prijavljen polako!";
+        this.success = "Uspješno ste se registrovali! Za par sekundi bićete preusmereni na početnu stranicu!";
         setTimeout(() => {
           this.router.navigate(['/pocetna']);
         }, 3000);
