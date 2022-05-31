@@ -24,8 +24,8 @@ export class PrijavaComponent implements OnInit {
 
   ngOnInit(): void {
     this.formdata = new FormGroup({
-      korisnickoIme: new FormControl("test"),
-      lozinka: new FormControl("test")
+      korisnickoIme: new FormControl(""),
+      lozinka: new FormControl("")
     });
   }
 
